@@ -1,0 +1,6 @@
+= Bootstrap
+
+Looking to get involved with the Java EE Security Spec?
+
+Start here!
+
