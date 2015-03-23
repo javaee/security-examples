@@ -1,6 +1,8 @@
 = Bootstrap
 
-Looking to get involved with the Java EE Security Spec?
+The goal if this repo is to get everyone on the same page with level of knowledge.
 
-Start here!
+There's a great deal of legacy.  We may not carry it forward, but we all need to understand it.
+
+This repo is dedicated to spreading that knowledge and getting us all on the same page.  No assumed knowledge required.
 
