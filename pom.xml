@@ -15,6 +15,7 @@
   </dependencies>
 
   <modules>
+    <module>simple-jaas-example</module>
   </modules>
 
   <build>
