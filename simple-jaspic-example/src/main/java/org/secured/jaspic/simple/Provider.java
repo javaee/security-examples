@@ -1,5 +1,11 @@
 package org.secured.jaspic.simple;
 
+import javax.security.auth.message.AuthException;
+import javax.security.auth.message.AuthStatus;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+
 public class Provider extends HttpServerAuthModule {
     
     @Override
@@ -11,7 +17,7 @@ public class Provider extends HttpServerAuthModule {
             // The name of the authenticated user
             "snoopy",
             // the groups/roles of the authenticated user
-            asList("RedBaron", "JoeCool", "MansBestFriend" )
+            Arrays.asList("RedBaron", "JoeCool", "MansBestFriend")
         );
     }
 }
