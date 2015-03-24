@@ -20,11 +20,17 @@ public class Container {
         final CallbackHandler callbackHandler = new CallbackHandler() {
             @Override
             public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
-                final NameCallback username = (NameCallback) callbacks[0];
-                final PasswordCallback password = (PasswordCallback) callbacks[1];
+                for (final Callback callback : callbacks) {
+                    if (callback instanceof NameCallback) {
+                        ((NameCallback) callback).setName("snoopy");
 
-                username.setName("snoopy");
-                password.setPassword("woodst0ck".toCharArray());
+                    } else if (callback instanceof PasswordCallback) {
+                        ((PasswordCallback) callback).setPassword("woodst0ck".toCharArray());
+
+                    } else {
+                        throw new UnsupportedCallbackException(callback);
+                    }
+                }
             }
         };
 
@@ -64,6 +70,7 @@ public class Container {
         // - JoeCool
         // - MansBestFriend
 
+        System.out.println("=== User principals ===");
         for (final Principal principal : subject.getPrincipals()) {
             System.out.println(principal);
         }
