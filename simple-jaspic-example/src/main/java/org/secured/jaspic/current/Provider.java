@@ -15,8 +15,10 @@ import javax.security.auth.message.module.ServerAuthModule;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Map;
 
+import static javax.security.auth.message.AuthStatus.FAILURE;
 import static javax.security.auth.message.AuthStatus.SEND_SUCCESS;
 import static javax.security.auth.message.AuthStatus.SUCCESS;
 
@@ -41,12 +43,29 @@ public class Provider implements ServerAuthModule {
     @Override
     public AuthStatus validateRequest(MessageInfo messageInfo, Subject clientSubject, Subject serviceSubject) throws AuthException {
         try {
+
+            final HttpServletRequest request = (HttpServletRequest) messageInfo.getRequestMessage();
+
+            final String header = request.getHeader("Authorization");
+
+            final String[] credentials = parseCredentials(header);
+
+            final String username = credentials[0];
+            final String password = credentials[1];
+
+            if (!"snoopy".equals(username) || !"woodst0ck".equals(password)) {
+                return FAILURE;
+            }
+
             // Communicate the details of the authenticated user to the container. In many
             // cases the handler will just store the details and the container will actually handle
             // the login after we return from this method.
+
             handler.handle(new Callback[]{
+
                     // The name of the authenticated user
                     new CallerPrincipalCallback(clientSubject, "snoopy"),
+
                     // the groups/roles of the authenticated user
                     new GroupPrincipalCallback(clientSubject, new String[]{"RedBaron", "JoeCool", "MansBestFriend"})}
             );
@@ -55,6 +74,19 @@ public class Provider implements ServerAuthModule {
         }
 
         return SUCCESS;
+    }
+
+    private static String[] parseCredentials(String header) {
+        final byte[] decoded = Base64.getDecoder().decode(header.replace("Basic ", ""));
+        return new String(decoded).split(":");
+    }
+
+    private String[] getUserAndPassword(String header) {
+        // TODO
+        // Yank "Basic "
+        // Base64 decode
+        // split on ":"
+        return new String[0];
     }
 
 
