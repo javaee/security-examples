@@ -81,14 +81,6 @@ public class Provider implements ServerAuthModule {
         return new String(decoded).split(":");
     }
 
-    private String[] getUserAndPassword(String header) {
-        // TODO
-        // Yank "Basic "
-        // Base64 decode
-        // split on ":"
-        return new String[0];
-    }
-
 
     /**
      * This method will be called after the last Filter or Servlet in the request has been invoked
