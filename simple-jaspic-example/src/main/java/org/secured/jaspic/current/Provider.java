@@ -7,7 +7,6 @@ import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.UnsupportedCallbackException;
 import javax.security.auth.message.AuthException;
 import javax.security.auth.message.AuthStatus;
-import static javax.security.auth.message.AuthStatus.*;
 import javax.security.auth.message.MessageInfo;
 import javax.security.auth.message.MessagePolicy;
 import javax.security.auth.message.callback.CallerPrincipalCallback;
@@ -18,16 +17,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
+import static javax.security.auth.message.AuthStatus.SEND_SUCCESS;
+import static javax.security.auth.message.AuthStatus.SUCCESS;
+
 public class Provider implements ServerAuthModule {
 
     private CallbackHandler handler;
-    private final Class<?>[] supportedMessageTypes = new Class[] { HttpServletRequest.class, HttpServletResponse.class };
+    private final Class<?>[] supportedMessageTypes = new Class[]{HttpServletRequest.class, HttpServletResponse.class};
 
     @Override
     public void initialize(MessagePolicy requestPolicy, MessagePolicy responsePolicy, CallbackHandler handler, @SuppressWarnings("rawtypes") Map options) throws AuthException {
         this.handler = handler;
     }
-    
+
     @Override
     public Class<?>[] getSupportedMessageTypes() {
         return supportedMessageTypes;
@@ -42,11 +44,11 @@ public class Provider implements ServerAuthModule {
             // Communicate the details of the authenticated user to the container. In many
             // cases the handler will just store the details and the container will actually handle
             // the login after we return from this method.
-            handler.handle( new Callback[] {
+            handler.handle(new Callback[]{
                     // The name of the authenticated user
-	            new CallerPrincipalCallback(clientSubject, "snoopy"),
-	            // the groups/roles of the authenticated user
-	            new GroupPrincipalCallback(clientSubject, new String[]{"RedBaron", "JoeCool", "MansBestFriend"})}
+                    new CallerPrincipalCallback(clientSubject, "snoopy"),
+                    // the groups/roles of the authenticated user
+                    new GroupPrincipalCallback(clientSubject, new String[]{"RedBaron", "JoeCool", "MansBestFriend"})}
             );
         } catch (IOException | UnsupportedCallbackException e) {
             throw (AuthException) new AuthException().initCause(e);
@@ -55,7 +57,7 @@ public class Provider implements ServerAuthModule {
         return SUCCESS;
     }
 
-  
+
     /**
      * This method will be called after the last Filter or Servlet in the request has been invoked
      */
