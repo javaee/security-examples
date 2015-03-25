@@ -43,6 +43,7 @@ public class Provider implements LoginModule {
         System.out.println("=== Options ===");
         options.entrySet().stream()
                 .forEach(System.out::println);
+
         System.out.println("=== Shared state ===");
         sharedState.entrySet().stream()
                 .forEach(System.out::println);
