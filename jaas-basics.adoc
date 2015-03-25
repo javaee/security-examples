@@ -1,2 +1,0 @@
-= Java Authentication and Authorization Service
-

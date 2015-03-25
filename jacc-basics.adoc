@@ -1,3 +1,0 @@
-= Java Authorization Contract for Containers
-
-TODO
