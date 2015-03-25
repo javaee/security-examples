@@ -5,7 +5,7 @@
 
   <parent>
     <groupId>net.java.jsr375</groupId>
-    <artifactId>jsr375-proposals</artifactId>
+    <artifactId>bootstrap</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
