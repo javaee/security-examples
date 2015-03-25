@@ -17,7 +17,7 @@
   <modules>
     <module>simple-jaas-example</module>
     <module>simple-jacc-example</module>
-    <!-- <module>simple-jaspic-example</module> -->
+    <module>simple-jaspic-example</module>
   </modules>
 
   <build>
