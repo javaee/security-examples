@@ -16,7 +16,7 @@
 
   <modules>
     <module>simple-jaas-example</module>
-    <module>simple-jacc-example</module>
+    <module>roles-allowed-and-runas</module>
     <module>simple-jaspic-example</module>
   </modules>
 
