@@ -1,4 +1,6 @@
 *.class
+.classpath
+.project
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -17,3 +19,12 @@ target
 
 # emacs
 *~
+/.settings/
+/.project
+target/
+/bin/
+/dist/
+.settings/
+/**/.classpath
+/**/.project
+/**/.gitignore

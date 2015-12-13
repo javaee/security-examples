@@ -24,7 +24,7 @@
 
   <parent>
     <groupId>net.java.jsr375</groupId>
-    <artifactId>bootstrap</artifactId>
+    <artifactId>javaee-security-examples</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
