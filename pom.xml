@@ -58,6 +58,7 @@
 					</properties>
 					<excludes>
 						<exclude>**/*.adoc</exclude>
+						<exclude>**/*.launch</exclude>
 						<exclude>**/*.sh</exclude>
 						<exclude>**/pom.xml</exclude>
 						<exclude>**/README</exclude>
