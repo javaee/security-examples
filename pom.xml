@@ -1,37 +1,81 @@
 <project>
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>net.java.jsr375</groupId>
-  <artifactId>javaee-security-examples</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<groupId>net.java.jsr375</groupId>
+	<artifactId>javaee-security-examples</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <dependencies>
-    <dependency>
-      <groupId>javax</groupId>
-      <artifactId>javaee-api</artifactId>
-      <version>7.0</version>
-    </dependency>
-  </dependencies>
+	<properties>
+		<currentYear>2016</currentYear>
+	</properties>
 
-  <modules>
-    <module>simple-jaas-example</module>
-    <module>roles-allowed-and-runas</module>
-    <module>simple-jaspic-example</module>
-  </modules>
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+		</dependency>
+	</dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <optimize>true</optimize>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+	<modules>
+		<module>simple-jaas-example</module>
+		<module>roles-allowed-and-runas</module>
+		<module>simple-jaspic-example</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<optimize>true</optimize>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<!-- ======================================================= -->
+			<!-- Maven License Plugin -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>3.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<header>src/license/header.txt</header>
+					<properties>
+						<owner>Oracle</owner>
+						<currentYear>2016</currentYear>
+					</properties>
+					<excludes>
+						<exclude>**/*.adoc</exclude>
+						<exclude>**/*.sh</exclude>
+						<exclude>**/pom.xml</exclude>
+						<exclude>**/README</exclude>
+						<exclude>**/settings.xml</exclude>
+						<exclude>src/license/**</exclude>
+						<exclude>src/test/resources/**</exclude>
+						<exclude>src/main/resources/**</exclude>
+					</excludes>
+					<headerDefinitions>
+						<headerDefinition>src/license/headers.xml</headerDefinition>
+					</headerDefinitions>
+					<mapping>
+						<java>JAVA_STYLE</java>
+					</mapping>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<inceptionYear>2015</inceptionYear>
 </project>
 
