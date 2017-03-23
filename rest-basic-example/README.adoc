@@ -1,1 +1,5 @@
 # rest-basic-example
+
+Test for https://github.com/javaee-security-spec/soteria/issues/25 which only works on WildFly 10 in the case the Authorization header is specified.
+
+No response with status 401 and a header of _WWW-Authenticate_ is generated because the JASPIC mofule of WildFly doesn't indicate the URL as protected.
