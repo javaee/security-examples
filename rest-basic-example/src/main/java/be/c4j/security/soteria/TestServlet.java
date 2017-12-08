@@ -42,9 +42,7 @@ package be.c4j.security.soteria;
 import java.io.IOException;
 
 import javax.annotation.security.DeclareRoles;
-import javax.security.authentication.mechanism.http.annotation.BasicAuthenticationMechanismDefinition;
-import javax.security.identitystore.annotation.Credentials;
-import javax.security.identitystore.annotation.EmbeddedIdentityStoreDefinition;
+import javax.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
 import javax.servlet.annotation.ServletSecurity;
@@ -53,6 +51,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.glassfish.soteria.identitystores.annotation.Credentials;
+import org.glassfish.soteria.identitystores.annotation.EmbeddedIdentityStoreDefinition;
+
 /**
  * Servlet so that we have a chance to put the username/password in the Basic mechanism.
  */
@@ -60,7 +61,7 @@ import javax.servlet.http.HttpServletResponse;
     realmName="Soteria Realm"
 )
 
-@EmbeddedIdentityStoreDefinition({ 
+@EmbeddedIdentityStoreDefinition({
     @Credentials(callerName = "rudy", password = "secret1", groups = { "foo", "bar" }),
     @Credentials(callerName = "will", password = "secret2", groups = { "foo", "kaz" }),
     @Credentials(callerName = "arjan", password = "secret3", groups = { "foo" }) }
