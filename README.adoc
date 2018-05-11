@@ -31,6 +31,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
+[WARNING]
+*This project is now part of the EE4J initiative. This repository has been archived as all activities are now happening in the https://github.com/eclipse-ee4j/security-examples[corresponding Eclipse repository]. See https://www.eclipse.org/ee4j/status.php[here] for the overall EE4J transition status.*
+ 
 = Examples
 
 The goal if this repo is to get everyone on the same page with level of knowledge.
